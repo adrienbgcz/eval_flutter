@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Plant> saved;
-    final Function callback;
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
       ),
       home: FirstPage(callback: callback,)
     );
+  }
+  void callback() {
+
   }
 }
 
