@@ -1,19 +1,10 @@
 import 'package:eval_flutter/screen/widgets/AppBarFirst.dart';
 import 'package:flutter/material.dart';
-
-import '../modal/Plant.dart';
 import 'HomePage.dart';
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({Key? key, required this.callback, required this.saved}) : super(key: key);
-  final Function callback;
-  final List<Plant> saved;
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
-  @override
-  State<FirstPage> createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +20,9 @@ class _FirstPageState extends State<FirstPage> {
                   width: 300,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                        fit: BoxFit.cover,
-                          image: AssetImage('assets/plant.png'),
-                      )
-                  ),
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/plant.png'),
+                  )),
                 ),
                 Container(
                   height: 120,
@@ -54,20 +44,21 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage(saved: widget.saved, callback: widget.callback,)),
-                    );
-                  },
-                  icon: Image.asset(
-                    'assets/green_arrow.png',
                     height: 100,
-                  ),
-                )),
+                    width: 100,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                        );
+                      },
+                      icon: Image.asset(
+                        'assets/green_arrow.png',
+                        height: 100,
+                      ),
+                    )),
               ]),
         ),
       ),

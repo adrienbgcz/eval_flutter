@@ -10,15 +10,13 @@ import 'package:eval_flutter/service/constants.dart';
 import '../modal/Plant.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.saved, required this.callback}) : super(key: key);
-  final List<Plant> saved;
-  final Function callback;
-
+  const HomePage({Key? key}) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Plant> _saved = [];
   @override
   Widget build(BuildContext context) {
 
@@ -47,25 +45,27 @@ class _HomePageState extends State<HomePage> {
                       itemCount: plants.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return PlantCard(callback: addFavorite, widget.saved, plant: plants[index]);
+                        return PlantCard(plant: plants[index],callback: changeFavorite,isFavorite: isFavorite(plants[index]),);
                       },
                     ),
                   ),
-                  AppBottomBarHome(saved: widget.saved, callback: widget.callback,)
+                  AppBottomBarHome()
 
 
 
                 ]))));
   }
 
-  void addFavorite(plant) {
+  bool isFavorite(Plant plant){
+    return _saved.contains(plant);
+  }
+
+  void changeFavorite(Plant plant) {
     setState(() {
-      if (!widget.saved.contains(plant)) {
-        widget.saved.add(plant);
-        print(widget.saved);
-      } else {
-        widget.saved.remove(plant);
-        print(widget.saved);
+      if(_saved.contains(plant)){
+        _saved.remove(plant);
+      }else{
+        _saved.add(plant);
       }
     });
   }

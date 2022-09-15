@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import '../../modal/Plant.dart';
 
 class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
-  const AppBottomBarHome({Key? key, required this.saved, required this.callback}) : super(key: key);
-  final Function callback;
-  final List<Plant> saved;
+  const AppBottomBarHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +25,14 @@ class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
               IconButton(onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FirstPage(callback: callback, saved: saved,)),
+                  MaterialPageRoute(builder: (context) => FirstPage()),
                 );
               }, icon: Icon(Icons.home),),
               IconButton(onPressed: () {}, icon: Icon(Icons.search),),
               IconButton(onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FavoritesPage(saved: saved)),
+                  MaterialPageRoute(builder: (context) => FavoritesPage(saved: [],)),
                 );
               }, icon: Icon(Icons.favorite),),
               IconButton(onPressed: () {

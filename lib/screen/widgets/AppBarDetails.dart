@@ -17,7 +17,7 @@ class AppBarPlant extends StatelessWidget with PreferredSizeWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage(saved: [], callback: callback,)),
+            MaterialPageRoute(builder: (context) => HomePage()),
           );
         },
         icon: Icon(Icons.arrow_back, color: Colors.black),

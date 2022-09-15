@@ -17,18 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Plant> saved;
 
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FirstPage(callback: callback, saved: [])
+      home: const FirstPage()
     );
-  }
-  void callback() {
-
   }
 }
 
