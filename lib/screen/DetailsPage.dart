@@ -1,8 +1,12 @@
 import 'package:eval_flutter/screen/widgets/AppBarDetails.dart';
 import 'package:flutter/material.dart';
 
+import '../modal/Plant.dart';
+
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({Key? key, required this.plant, required this.callback}) : super(key: key);
+  final Plant plant;
+  final Function callback;
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -12,7 +16,7 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarPlant(),
+      appBar: AppBarPlant(callback: widget.callback,),
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -23,29 +27,26 @@ class _DetailsPageState extends State<DetailsPage> {
                   children: [
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Image.asset(
-                        'assets/plant.png',
+                        widget.plant.assetPath,
                         height: 250,
                       )
                     ]),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Bird of Paradise",
-                              style: TextStyle(fontSize: 30),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                            ),
-                          ],
-                        )
-                      ],
+                    Container(
+                      height: 160,
+                      child : Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.plant.name,
+                            style: TextStyle(fontSize: 30),
+                          ),
+                          Text(
+                            widget.plant.description,
+                          ),
+                        ],
+                      ),
                     ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

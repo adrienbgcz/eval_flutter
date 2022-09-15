@@ -5,16 +5,20 @@ class SearchInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(Icons.search),
-        title: TextField(
-          /*controller: controller,*/
-          decoration: InputDecoration(
-              hintText: 'Search...', border: InputBorder.none),
-          /*onChanged: onSearchTextChanged,*/
+    return SizedBox(
+        width: 260,
+        child: Card(
+          child: ListTile(
+            leading: Icon(Icons.search),
+            title: TextField(
+              /*controller: controller,*/
+              decoration: InputDecoration(
+                  hintText: 'Search...', border: InputBorder.none),
+
+              /*onChanged: onSearchTextChanged,*/
+            ),
+          ),
         ),
-      ),
     );
   }
 }

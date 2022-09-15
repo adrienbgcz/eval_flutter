@@ -5,15 +5,17 @@ class AppBarFirst extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return Padding(
+      padding: EdgeInsets.all(5),
+    child: AppBar(
       backgroundColor: Colors.white10,
       elevation: 0,
       leading: Image.asset(
-        'assets/logo.png',
+        'assets/plant_logo.png',
         height: 15,
         width: 15,
       )
-    );
+    ));
   }
 
   @override

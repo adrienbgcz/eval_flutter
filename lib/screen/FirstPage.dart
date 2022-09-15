@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'HomePage.dart';
 
 class FirstPage extends StatefulWidget {
-  const FirstPage({Key? key}) : super(key: key);
+  const FirstPage({Key? key, required this.callback}) : super(key: key);
+  final Function callback;
 
   @override
   State<FirstPage> createState() => _FirstPageState();
@@ -17,16 +18,17 @@ class _FirstPageState extends State<FirstPage> {
       appBar: AppBarFirst(),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(40),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 250,
-                  width: 200,
+                  height: 300,
+                  width: 300,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/plant.png')
+                        fit: BoxFit.cover,
+                          image: AssetImage('assets/plant.png'),
                       )
                   ),
                 ),
@@ -49,18 +51,21 @@ class _FirstPageState extends State<FirstPage> {
                     ],
                   ),
                 ),
-                IconButton(
+                Container(
+                  height: 100,
+                  width: 100,
+                child: IconButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => HomePage(saved: [], callback: widget.callback,)),
                     );
                   },
-                  icon: Icon(
-                    Icons.arrow_circle_right_rounded,
-                    color: Colors.black,
+                  icon: Image.asset(
+                    'assets/green_arrow.png',
+                    height: 100,
                   ),
-                ),
+                )),
               ]),
         ),
       ),
