@@ -3,9 +3,8 @@ import 'package:eval_flutter/screen/widgets/AppBarHome.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatefulWidget {
-  const FavoritesPage({Key? key, required this.saved, /*required this.callback*/}) : super(key: key);
+  const FavoritesPage({Key? key, required this.saved}) : super(key: key);
   final List<Plant> saved;
-  /*final Function callback;*/
 
   @override
   State<FavoritesPage> createState() => _FavoritesPageState();
@@ -24,7 +23,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
               title: Text(plant.name),
               trailing: IconButton(
                   onPressed: () {
-                    /*widget.callback(plant: plant);*/
+                    setState(() {
+                      widget.saved.remove(plant);
+                    });
                   },
                   icon: const Icon(Icons.favorite, color: Colors.red))
 

@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  AppBottomBarHome(saved: [], callback: widget.callback,)
+                  AppBottomBarHome(saved: widget.saved, callback: widget.callback,)
 
 
 
@@ -61,11 +61,11 @@ class _HomePageState extends State<HomePage> {
   void addFavorite(plant) {
     setState(() {
       if (!widget.saved.contains(plant)) {
-        print(widget.saved);
         widget.saved.add(plant);
-      } else {
         print(widget.saved);
+      } else {
         widget.saved.remove(plant);
+        print(widget.saved);
       }
     });
   }

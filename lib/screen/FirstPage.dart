@@ -1,11 +1,13 @@
 import 'package:eval_flutter/screen/widgets/AppBarFirst.dart';
 import 'package:flutter/material.dart';
 
+import '../modal/Plant.dart';
 import 'HomePage.dart';
 
 class FirstPage extends StatefulWidget {
-  const FirstPage({Key? key, required this.callback}) : super(key: key);
+  const FirstPage({Key? key, required this.callback, required this.saved}) : super(key: key);
   final Function callback;
+  final List<Plant> saved;
 
   @override
   State<FirstPage> createState() => _FirstPageState();
@@ -58,7 +60,7 @@ class _FirstPageState extends State<FirstPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage(saved: [], callback: widget.callback,)),
+                      MaterialPageRoute(builder: (context) => HomePage(saved: widget.saved, callback: widget.callback,)),
                     );
                   },
                   icon: Image.asset(

@@ -27,7 +27,7 @@ class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
               IconButton(onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FirstPage(callback: callback,)),
+                  MaterialPageRoute(builder: (context) => FirstPage(callback: callback, saved: saved,)),
                 );
               }, icon: Icon(Icons.home),),
               IconButton(onPressed: () {}, icon: Icon(Icons.search),),
