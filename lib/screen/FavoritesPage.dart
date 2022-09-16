@@ -1,4 +1,5 @@
 import 'package:eval_flutter/modal/Plant.dart';
+import 'package:eval_flutter/screen/widgets/AppBarFavorites.dart';
 import 'package:eval_flutter/screen/widgets/AppBarHome.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarHome(),
+      appBar: AppBarFavorites(),
       body: ListView.builder(
         itemCount: widget.saved.length,
         itemBuilder: (context, index) {

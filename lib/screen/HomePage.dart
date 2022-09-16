@@ -45,11 +45,11 @@ class _HomePageState extends State<HomePage> {
                       itemCount: plants.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return PlantCard(plant: plants[index],callback: changeFavorite,isFavorite: isFavorite(plants[index]),);
+                        return PlantCard(plant: plants[index], callback: changeFavorite, isFavorite: isFavorite(plants[index]),);
                       },
                     ),
                   ),
-                  AppBottomBarHome()
+                  AppBottomBarHome(saved: _saved,)
 
 
 

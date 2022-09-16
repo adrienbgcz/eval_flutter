@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import '../../modal/Plant.dart';
 
 class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
-  const AppBottomBarHome({Key? key}) : super(key: key);
+  const AppBottomBarHome({Key? key, required this.saved}) : super(key: key);
+  final List<Plant> saved;
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +23,35 @@ class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FirstPage()),
-                );
-              }, icon: Icon(Icons.home),),
-              IconButton(onPressed: () {}, icon: Icon(Icons.search),),
-              IconButton(onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FavoritesPage(saved: [],)),
-                );
-              }, icon: Icon(Icons.favorite),),
-              IconButton(onPressed: () {
-
-              }, icon: Icon(Icons.shopping_bag),),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FirstPage()),
+                  );
+                },
+                icon: Icon(Icons.home),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.search),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FavoritesPage(
+                              saved: saved,
+                            )),
+                  );
+                },
+                icon: Icon(Icons.favorite),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.shopping_bag),
+              ),
             ],
           ),
           /*child: AppBar(
