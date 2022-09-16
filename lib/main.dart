@@ -1,12 +1,17 @@
-import 'package:eval_flutter/screen/DetailsPage.dart';
-import 'package:eval_flutter/screen/FavoritesPage.dart';
 import 'package:eval_flutter/screen/FirstPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'FavProvider.dart';
 import 'modal/Plant.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FavProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

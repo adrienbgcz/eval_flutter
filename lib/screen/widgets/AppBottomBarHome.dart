@@ -1,4 +1,3 @@
-import 'package:eval_flutter/screen/DetailsPage.dart';
 import 'package:eval_flutter/screen/FavoritesPage.dart';
 import 'package:eval_flutter/screen/FirstPage.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +40,7 @@ class AppBottomBarHome extends StatelessWidget with PreferredSizeWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => FavoritesPage(
-                              saved: saved,
-                            )),
+                        builder: (context) => FavoritesPage()),
                   );
                 },
                 icon: Icon(Icons.favorite),

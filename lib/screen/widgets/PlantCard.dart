@@ -1,6 +1,8 @@
+import 'package:eval_flutter/FavProvider.dart';
 import 'package:eval_flutter/modal/Plant.dart';
 import 'package:eval_flutter/screen/DetailsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PlantCard extends StatelessWidget {
   const PlantCard(
@@ -13,8 +15,10 @@ class PlantCard extends StatelessWidget {
   final Function callback;
   final bool isFavorite;
 
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: 195,
       width: 150,
@@ -53,8 +57,10 @@ class PlantCard extends StatelessWidget {
                       child: FloatingActionButton(
                         heroTag: null,
                         backgroundColor: Colors.white70,
-                        onPressed: () => callback(plant),
-                        child: chooseIcon(),
+                        onPressed: () => {
+                          Provider.of<FavProvider>(context, listen: false).addPlant(plant)
+                        },
+                        child: chooseIcon(context),
                       ),
                     ),
                   ),
@@ -98,11 +104,12 @@ class PlantCard extends StatelessWidget {
     );
   }
 
-  Icon chooseIcon() {
+  Icon chooseIcon(context) {
+    bool alreadySaved = Provider.of<FavProvider>(context, listen: true).getPlants.contains(plant);
     return Icon(
-      (isFavorite) ? Icons.favorite : Icons.favorite_border,
+      (alreadySaved) ? Icons.favorite : Icons.favorite_border,
       size: 10,
-      color: (isFavorite) ? Colors.red : Colors.black,
+      color: (alreadySaved) ? Colors.red : Colors.black,
     );
   }
 }
